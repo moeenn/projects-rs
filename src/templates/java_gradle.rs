@@ -4,25 +4,25 @@ use std::path::PathBuf;
 
 #[derive(Template)]
 #[template(path = "java-gradle-build-gradle.txt")]
-struct JavaGradleBuildGradle {
+struct BuildGradle {
     name: String,
 }
 
 #[derive(Template)]
 #[template(path = "java-gradle-readme-md.txt")]
-struct JavaGradleReadmeMd {
+struct Readme {
     name: String,
 }
 
 #[derive(Template)]
 #[template(path = "java-gradle-main-java.txt")]
-struct JavaGradleMainJava {
+struct MainJava {
     name: String,
 }
 
 #[derive(Template)]
 #[template(path = "java-gradle-main-test-java.txt")]
-struct JavaGradleMainTestJava {
+struct MainTestJava {
     name: String,
 }
 
@@ -51,19 +51,19 @@ pub fn new_config(name: &String) -> TemplateConfig {
         files: vec![
             TemplateFile {
                 path: PathBuf::new().join("README.md"),
-                template: Box::new(JavaGradleReadmeMd { name: name.clone() }),
+                template: Box::new(Readme { name: name.clone() }),
             },
             TemplateFile {
                 path: PathBuf::new().join("build.gradle"),
-                template: Box::new(JavaGradleBuildGradle { name: name.clone() }),
+                template: Box::new(BuildGradle { name: name.clone() }),
             },
             TemplateFile {
                 path: PathBuf::new().join(&main_src).join("Main.java"),
-                template: Box::new(JavaGradleMainJava { name: name.clone() }),
+                template: Box::new(MainJava { name: name.clone() }),
             },
             TemplateFile {
                 path: PathBuf::new().join(&test_src).join("MainTest.java"),
-                template: Box::new(JavaGradleMainTestJava { name: name.clone() }),
+                template: Box::new(MainTestJava { name: name.clone() }),
             },
         ],
     }
