@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = '{{ name }}.Main'
+}
+
+repositories { 
+    mavenCentral() 
+}
+
+jar {
+    archiveVersion =  '0.0.1'
+    archiveBaseName = '{{ name }}'
+    manifest {
+        attributes['Main-Class'] = '{{ name }}.Main'
+    }
+}
+
+testing {
+    suites {
+        test {
+            useJUnitJupiter('5.9.3')
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+}

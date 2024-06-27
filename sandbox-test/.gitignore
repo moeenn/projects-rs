@@ -1,0 +1,6 @@
+.gradle
+.vscode
+bin
+build
+*.class
+.DS_Store
