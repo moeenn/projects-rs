@@ -246,7 +246,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "projects-rs"
+name = "projects"
 version = "0.1.0"
 dependencies = [
  "askama",
