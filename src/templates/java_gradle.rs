@@ -26,7 +26,7 @@ struct JavaGradleMainTestJava {
     name: String,
 }
 
-pub fn new_java_config(name: &String) -> TemplateConfig {
+pub fn new_config(name: &String) -> TemplateConfig {
     let main_src = PathBuf::new()
         .join("src")
         .join("main")

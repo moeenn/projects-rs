@@ -23,7 +23,7 @@ impl TemplateType {
             "typescript" | "ts" => Some(Self::Typescript),
             "java-gradle" => Some(Self::JavaGradle),
             "python" => Some(Self::Python),
-            _ => None
+            _ => None,
         }
     }
 }

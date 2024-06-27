@@ -4,7 +4,7 @@ mod templates;
 use clap::Parser;
 use render::{TemplateConfig, TemplateExecutor, TemplateType};
 use std::process;
-use templates::java_gradle;
+use templates::{java_gradle, typescript};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -16,11 +16,16 @@ struct Args {
     name: String,
 
     #[arg(short, long)]
-    list: bool
+    list: bool,
 }
 
 const VALID_TEMPLATES: [&str; 6] = [
-    "c", "cpp-cmake", "javascript (or 'js')", "typescript (or 'ts')", "java-gradle", "python",
+    "c",
+    "cpp-cmake",
+    "javascript (or 'js')",
+    "typescript (or 'ts')",
+    "java-gradle",
+    "python",
 ];
 
 fn print_valid_templates() {
@@ -42,16 +47,16 @@ fn main() {
             return print_valid_templates();
         }
     };
-    
+
     let config: TemplateConfig = match template_type {
-        TemplateType::C => java_gradle::new_java_config(&args.name), // TODO: implement actual
-        TemplateType::CppCmake => java_gradle::new_java_config(&args.name), // TODO: implement actual
-        TemplateType::Javascript => java_gradle::new_java_config(&args.name), // TODO: implement actual
-        TemplateType::Typescript => java_gradle::new_java_config(&args.name), // TODO: implement actual
-        TemplateType::JavaGradle => java_gradle::new_java_config(&args.name),
-        TemplateType::Python => java_gradle::new_java_config(&args.name), // TODO: implement actual
+        TemplateType::C => java_gradle::new_config(&args.name), // TODO: implement actual
+        TemplateType::CppCmake => java_gradle::new_config(&args.name), // TODO: implement actual
+        TemplateType::Javascript => java_gradle::new_config(&args.name), // TODO: implement actual
+        TemplateType::Typescript => typescript::new_config(&args.name),
+        TemplateType::JavaGradle => java_gradle::new_config(&args.name),
+        TemplateType::Python => java_gradle::new_config(&args.name), // TODO: implement actual
     };
-    
+
     let executor = match TemplateExecutor::new(args.name, config) {
         Ok(ex) => ex,
         Err(e) => {
