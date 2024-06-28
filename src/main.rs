@@ -4,7 +4,7 @@ mod templates;
 use clap::Parser;
 use render::{TemplateConfig, TemplateExecutor, TemplateType};
 use std::process;
-use templates::{c, java_gradle, javascript, python, typescript};
+use templates::{c, cpp_cmake, java_gradle, javascript, python, typescript};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -50,7 +50,7 @@ fn main() {
 
     let config: TemplateConfig = match template_type {
         TemplateType::C => c::new_config(&args.name),
-        TemplateType::CppCmake => java_gradle::new_config(&args.name), // TODO: implement actual
+        TemplateType::CppCmake => cpp_cmake::new_config(&args.name),
         TemplateType::Javascript => javascript::new_config(&args.name),
         TemplateType::Typescript => typescript::new_config(&args.name),
         TemplateType::JavaGradle => java_gradle::new_config(&args.name),
