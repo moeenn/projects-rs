@@ -10,8 +10,8 @@ pub enum TemplateType {
     CppCmake,
     Javascript,
     Typescript,
-    JavaGradle,
     Python,
+    JavaGradle,
 }
 
 impl TemplateType {
@@ -21,8 +21,8 @@ impl TemplateType {
             "cpp-cmake" => Some(Self::CppCmake),
             "javascript" | "js" => Some(Self::Javascript),
             "typescript" | "ts" => Some(Self::Typescript),
+            "python" | "py" => Some(Self::Python),
             "java-gradle" => Some(Self::JavaGradle),
-            "python" => Some(Self::Python),
             _ => None,
         }
     }

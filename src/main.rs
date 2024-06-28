@@ -4,7 +4,7 @@ mod templates;
 use clap::Parser;
 use render::{TemplateConfig, TemplateExecutor, TemplateType};
 use std::process;
-use templates::{java_gradle, typescript, javascript, python};
+use templates::{c, java_gradle, javascript, python, typescript};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -25,7 +25,7 @@ const VALID_TEMPLATES: [&str; 6] = [
     "javascript (or 'js')",
     "typescript (or 'ts')",
     "java-gradle",
-    "python",
+    "python (or 'py')",
 ];
 
 fn print_valid_templates() {
@@ -49,7 +49,7 @@ fn main() {
     };
 
     let config: TemplateConfig = match template_type {
-        TemplateType::C => java_gradle::new_config(&args.name), // TODO: implement actual
+        TemplateType::C => c::new_config(&args.name),
         TemplateType::CppCmake => java_gradle::new_config(&args.name), // TODO: implement actual
         TemplateType::Javascript => javascript::new_config(&args.name),
         TemplateType::Typescript => typescript::new_config(&args.name),

@@ -39,6 +39,6 @@ Valid templates include:
  - cpp-cmake
  - javascript (or 'js')
  - typescript (or 'ts')
+ - python (or 'py')
  - java-gradle
- - python
 ```
