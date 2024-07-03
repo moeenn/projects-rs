@@ -1,0 +1,6 @@
+def main() -> None:
+    print("Hello world")
+
+
+def random_number() -> int:
+    return 42
